@@ -1,71 +1,50 @@
-# quarkus-crud-operation
+# Quarkus CRUD API
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+This project is a simple CRUD (Create, Read, Update, Delete) API implemented using the Quarkus framework. It serves as a learning exercise for Java developers familiar with Spring Boot who want to explore Quarkus and its benefits.
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+## Introduction
 
-## Running the application in dev mode
+The Quarkus CRUD API project provides a straightforward implementation of a CRUD API using Quarkus. It demonstrates the fundamental concepts of Quarkus, such as dependency injection, RESTful web services, data persistence.
 
-You can run your application in dev mode that enables live coding using:
-```shell script
-./mvnw compile quarkus:dev
-```
+The goal of this project is to help Java developers familiar with Spring Boot transition to Quarkus by comparing the two frameworks and showcasing the benefits of using Quarkus in terms of performance and resource consumption.
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
+# Prerequisite:
+- MySQL (8.0 Preferred)
+- Java (17 Preferred)
 
-## Packaging and running the application
+## Project Structure
 
-The application can be packaged using:
-```shell script
-./mvnw package
-```
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+The project follows a standard Maven project structure. The main components of the project are as follows:
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
+- `src/main/java`: Contains the Java source code of the application.
+- `src/main/resources`: Contains the configuration files and static resources.
+- `src/test/java`: Contains the test cases for the application.
+- `src/test/resources`: Contains the test configuration files.
+-------------------------------------------------------------------------------------
+- `src/main/java/com/harisraza/resources`:  Contains the resources (controllers) classes responsible for handling the API endpoints.
+- `src/main/java/com/harisraza/services`: Contains the service interfaces and inside `/impl` directory contains their respective implementation classes for implementing business logic.
+- `src/main/java/com/harisraza/exceptions`: Contains the exception classes and inside `/handles` directory contains their's respective handling classes to handle exception when thrown.
 
-If you want to build an _über-jar_, execute the following command:
-```shell script
-./mvnw package -Dquarkus.package.type=uber-jar
-```
+The Quarkus CRUD API exposes the following endpoints:
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+- `GET /api/note/{id}`: Retrieve an note by its ID.
+- `POST /api/note`: Creates a new note.
+- `PUT /api/note/{id}`: Updates an existing item by providing its ID.
+- `DELETE /api/note/{id}`: Deletes an note.
 
-## Creating a native executable
+The API follows RESTful conventions and returns JSON responses.
 
-You can create a native executable using: 
-```shell script
-./mvnw package -Pnative
-```
+# Configuration
+Go to the `src/main/resources/` and edit the `application.properties` to configure MySQL Database name and credentials.
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
-```shell script
-./mvnw package -Pnative -Dquarkus.native.container-build=true
-```
+## Running the Application
+To run the Quarkus CRUD API, execute the following command:
 
-You can then execute your native executable with: `./target/quarkus-crud-operation-1.0.0-SNAPSHOT-runner`
+if maven installed:
+```mvn compile quarkus:dev```
+else: 
+```./mvnw compile quarkus:dev```
 
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
-
-## Related Guides
-
-- Hibernate ORM with Panache ([guide](https://quarkus.io/guides/hibernate-orm-panache)): Simplify your persistence code for Hibernate ORM via the active record or the repository pattern
-- RESTEasy Classic ([guide](https://quarkus.io/guides/resteasy)): REST endpoint framework implementing Jakarta REST and more
-- JDBC Driver - MySQL ([guide](https://quarkus.io/guides/datasource)): Connect to the MySQL database via JDBC
-
-## Provided Code
-
-### Hibernate ORM
-
-Create your first JPA entity
-
-[Related guide section...](https://quarkus.io/guides/hibernate-orm)
-
-[Related Hibernate with Panache section...](https://quarkus.io/guides/hibernate-orm-panache)
+Have fun coding!
 
 
-### RESTEasy JAX-RS
-
-Easily start your RESTful Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started#the-jax-rs-resources)
